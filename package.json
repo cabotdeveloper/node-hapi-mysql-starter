@@ -1,0 +1,17 @@
+{
+  "name": "cabot-chat-app",
+  "version": "1.0.0",
+  "description": "Node + Hapi + Socket + MySQL skeleton",
+  "author": "Cabot",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "console-stamp": "^0.2.2",
+    "glue": "2.x.x",
+    "hapi": "^14.0.0",
+    "inert": "^4.0.1"
+  }
+}

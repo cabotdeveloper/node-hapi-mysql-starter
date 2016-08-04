@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Simple Long polling chat</title>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/semantic-ui/2.1.8/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="client.css">
+</head>
+<body>
+<div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <section class="ui piled segment" id="chat">
+            <header class="ui header">Simple Long polling chat</header>
+            <div>
+                <div id="container">
+                    <div class="ui middle aligned divided relaxed list" id="messages">
+                    </div>
+                </div>
+            </div>
+            <form class="ui fluid action input" name="sendform">
+                <input type="text" name="author" placeholder="Anonymous">
+                <input type="ui fluid action input" name="message" placeholder="Message...">
+                <button type="submit" class="ui disabled button" name="button">Send</button>
+            </form>
+        </section>
+    </div>
+</div>
+<script src="client.js"></script>
+<script>
+    new ChatClient('subscribe', 'send');
+</script>
+</body>
+</html>
