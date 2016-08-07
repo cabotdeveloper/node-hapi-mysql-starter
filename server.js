@@ -6,8 +6,9 @@ const events = require('events');
 const Path = require('path');
 var Glue = require('glue');
 var Config = require('./config/config');
-require('console-stamp')(console, '[HH:MM:ss.l]');  
+require('console-stamp')(console, { pattern : "dd/m/yyyy HH:MM:ss.l" } );  
 
+console.log('TEST')
 
 const dispatcher = new events.EventEmitter();
 
@@ -38,7 +39,11 @@ var manifest = {
                 }
             }
         }
-    ]
+    ],
+
+    plugins:{
+        '../lib': [{ select: 'cabot-chat-app' }]
+    }
 };
 
 module.exports = manifest;
@@ -50,8 +55,12 @@ if (!module.parent) {
             throw err;
         }
 
-        server.start(function () {
-            console.error(Config.product.name+ ' started on ' + Config.server.service.uri);
+        server.start(function (err) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            console.log(Config.product.name+ ' started on ' + Config.server.service.uri);
         });
     });
 }

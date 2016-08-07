@@ -6,12 +6,18 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "clear; forever start ./server.js",
+    "stop": "forever stop ./server.js"
   },
   "dependencies": {
     "console-stamp": "^0.2.2",
     "glue": "2.x.x",
-    "hapi": "^14.0.0",
-    "inert": "^4.0.1"
+    "good": "^6.6.0",
+    "good-file": "^5.1.2",
+    "hapi": "^11.0.0",
+    "hapi-swagger": "2.2.x",
+    "inert": "^4.0.1",
+    "joi": "^9.0.4",
+    "vision": "^4.1.0"
   }
 }
