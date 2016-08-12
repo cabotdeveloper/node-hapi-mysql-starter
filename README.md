@@ -10,7 +10,7 @@ A basic starter repo that can be cloned and used for new API services.
 * Install forever globally in your machine `npm install -g forever`
 * From terminal run `npm install` - This will install dependant modules for the project
 * Start your application `npm start`
-* Navigate to `http://localhost:3000/swagger`
+* Navigate to <http://localhost:3000/swagger>
 * Stop your application `npm stop`
 
 ### IMPORTANT
