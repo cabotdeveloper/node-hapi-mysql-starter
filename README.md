@@ -8,7 +8,8 @@ A basic starter repo that can be cloned and used for new API services.
 * REST documentation using Swagger
 * Usage of core MySQL module in Hapi (We should start using other ORM modules)
 * Route validations using Joi
-* Usage of Glue to unify the manifest 
+* Usage of Glue to unify the manifest
+* Logger using good-file module
 
 ### Installation & set-up
 * Clone the repo
