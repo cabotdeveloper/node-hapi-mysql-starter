@@ -1,9 +1,11 @@
 var MySql = require('mysql');
-var DbConnection = require('./dbConnections');
+var DbConnection = require('./dbConfig');
 
 module.exports = {
 	MySqlConnection: function() {
-		var MySqlConnection = MySql.createConnection(DbConnection.mysql_test.options);
+		var MySqlConnection = MySql.createConnection(
+			DbConnection.mysql_test.options
+		);
 
 		MySqlConnection.connect(function(err) {
 			if (err) {

@@ -2,7 +2,7 @@
 
 const Path = require('path');
 var Glue = require('glue');
-var Config = require('./config/config');
+var Config = require('./config/appConfig');
 require('console-stamp')(console, { pattern : "dd/m/yyyy HH:MM:ss" } );  
 
 Config.server.service.uri = 
