@@ -6,8 +6,8 @@
   "license": "MIT",
   "main": "server.js",
   "scripts": {
-    "start": "clear; forever start ./server.js",
-    "stop": "forever stop ./server.js"
+    "start": "forever start server.js",
+    "stop": "forever stop server.js"
   },
   "dependencies": {
     "console-stamp": "^0.2.2",
