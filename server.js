@@ -1,15 +1,10 @@
 'use strict';
 
 const Hapi = require('hapi');
-const Inert = require('inert');
-const events = require('events');
 const Path = require('path');
 var Glue = require('glue');
 var Config = require('./config/config');
-require('console-stamp')(console, '[HH:MM:ss.l]');  
-
-
-const dispatcher = new events.EventEmitter();
+require('console-stamp')(console, '[dd-mm-yyyy HH:MM:ss]');  
 
 Config.server.service.uri = 
     (Config.server.service.tls ? 'https://' : 'http://') +
@@ -38,7 +33,12 @@ var manifest = {
                 }
             }
         }
-    ]
+    ],
+    plugins: {
+        
+        '../lib': [{ select: 'node-hapi-mysql' }]
+
+    }
 };
 
 module.exports = manifest;
@@ -46,65 +46,16 @@ module.exports = manifest;
 if (!module.parent) {
     Glue.compose(manifest, { relativeTo: Path.join(__dirname, 'node_modules') }, function (err, server) {
 
-        if (err) {
-            throw err;
+        if ( err ) {
+            console.log( err );
         }
 
         server.start(function () {
-            console.error(Config.product.name+ ' started on ' + Config.server.service.uri);
+            
+            if ( err ) {
+                console.error( err ); 
+            }
+            console.log(Config.product.name+ ' started on ' + Config.server.service.uri);
         });
     });
 }
-
-
-/*
-
-const server = new Hapi.Server({
-    connections: {
-        routes: {
-            cors: true,
-            files: {
-                relativeTo: path.join(__dirname, './client')
-            }
-        }
-    }
-});
-
-server.connection({ port: 84 });
-server.register(Inert, () => {});
-
-server.route({
-    method: 'POST',
-    path: '/send',
-    handler: (req, res) => {
-        dispatcher.emit('message', req.payload);
-        res('ok').type('text/plain');
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/subscribe',
-    handler: (req, res) => {
-        dispatcher.once('message', message => {
-            res(message)
-                .type('text/plain')
-                .header('Cache-Control', 'no-cache, must-revalidate');
-        });
-    }
-});
-
-server.route({
-    method: 'GET',
-    path: '/{param*}',
-    handler: {
-        directory: {
-            path: '.',
-            redirectToSlash: true,
-            index: true
-        }
-    }
-});
-
-server.start();
-*/
